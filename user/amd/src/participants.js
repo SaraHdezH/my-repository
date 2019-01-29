@@ -78,6 +78,18 @@ define(['jquery', 'core/str', 'core/modal_factory', 'core/modal_events', 'core/t
     Participants.prototype.stateHelpIcon = "";
 
     /**
+     * @var {String} fullname course
+     * @private
+     */
+    Participants.prototype.fullname = "";
+
+    /**
+     * @var {String} msgwelcome course
+     * @private
+     */
+    Participants.prototype.msgwelcome = "";
+
+    /**
      * Private method
      *
      * @method attachEventListeners
