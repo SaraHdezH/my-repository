@@ -48,6 +48,8 @@ define(['jquery', 'core/str', 'core/modal_factory', 'core/modal_events', 'core/t
         this.courseId = options.courseid;
         this.noteStateNames = options.noteStateNames;
         this.stateHelpIcon = options.stateHelpIcon;
+        this.fullname= options.fullname;
+        this.msgwelcome= options.msgwelcome;
 
         this.attachEventListeners();
     };
