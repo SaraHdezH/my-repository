@@ -121,7 +121,7 @@ define(['jquery', 'core/str', 'core/modal_factory', 'core/modal_events', 'core/t
                         this.showAddNote(ids).fail(Notification.exception);
                         break;
                 }
-                
+
                 $(SELECTORS.BULKACTIONSELECT + ' option[value=""]').prop('selected', 'selected');
             } else if (action !== '') {
                 if ($(SELECTORS.BULKUSERSELECTEDCHECKBOXES).length > 0) {
@@ -304,6 +304,55 @@ define(['jquery', 'core/str', 'core/modal_factory', 'core/modal_events', 'core/t
         }.bind(this));
     };
 
+    /*Mensaje de Bienvenida*/
+
+    Participants.prototype.showSendWelcomeMessage = function(users) {
+
+
+        if (users.length == 0) {
+            // Nothing to do.
+            return $.Deferred().resolve().promise();
+        }
+
+
+        var context = {msgwelcome: this.msgwelcome};
+    //console.log(algo);
+
+        var titlePromise = null;
+        if (users.length == 1) {
+            titlePromise = Str.get_string('sendbulkmessagesingle', 'core_message');
+        } else {
+            titlePromise = Str.get_string('sendbulkmessage', 'core_message', users.length);
+        }
+
+        return $.when(
+            ModalFactory.create({
+                type: ModalFactory.types.SAVE_CANCEL,
+                //body: Templates.render('core_user/send_bulk_message', {})
+                body: Templates.render('core_user/send_bulk_welcome_message', context)
+              }),
+            titlePromise
+        ).then(function(modal, title) {
+            // Keep a reference to the modal.
+            this.modal = modal;
+
+            this.modal.setTitle(title);
+            this.modal.setSaveButtonText(title);
+
+            // We want to focus on the action select when the dialog is closed.
+            this.modal.getRoot().on(ModalEvents.hidden, function() {
+                $(SELECTORS.BULKACTIONSELECT).focus();
+                this.modal.getRoot().remove();
+            }.bind(this));
+
+            this.modal.getRoot().on(ModalEvents.save, this.submitSendMessage.bind(this, users));
+
+            this.modal.show();
+
+            return this.modal;
+        }.bind(this));
+    };
+    
     /**
      * Send a message to these users.
      *
