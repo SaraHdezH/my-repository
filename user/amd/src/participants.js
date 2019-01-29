@@ -110,11 +110,18 @@ define(['jquery', 'core/str', 'core/modal_factory', 'core/modal_events', 'core/t
                     ids.push(id);
                 });
 
-                if (action == '#messageselect') {
-                    this.showSendMessage(ids).fail(Notification.exception);
-                } else if (action == '#addgroupnote') {
-                    this.showAddNote(ids).fail(Notification.exception);
+                switch (action) {
+                    case '#messageselect':
+                        this.showSendMessage(ids).fail(Notification.exception);
+                        break;
+                    case '#welcomemessage':
+                        this.showSendWelcomeMessage(ids).fail(Notification.exception);
+                        break;
+                    case '#addgroupnote':
+                        this.showAddNote(ids).fail(Notification.exception);
+                        break;
                 }
+                
                 $(SELECTORS.BULKACTIONSELECT + ' option[value=""]').prop('selected', 'selected');
             } else if (action !== '') {
                 if ($(SELECTORS.BULKUSERSELECTEDCHECKBOXES).length > 0) {
