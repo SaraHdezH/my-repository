@@ -262,3 +262,4 @@ $string['eventmessagecontactunblocked'] = 'Message contact unblocked';
 $string['messagingdisabled'] = 'Messaging is disabled on this site, emails will be sent instead';
 $string['userisblockingyou'] = 'This user has blocked you from sending messages to them.';
 $string['userisblockingyounoncontact'] = '{$a} only accepts messages from their contacts.';
+$string['supuesto2'] = '¡Sería genial que esto se viera en pantalla2!';
