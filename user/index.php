@@ -349,8 +349,15 @@ if ($bulkoperations) {
     echo '</div></div>';
     echo '</form>';
 
+    $a = new stdClass();
+    $a->coursename = $course->fullname;
+    $coursename= get_string('welcomemessage', '', $a);
+    $welcomemsg=get_string('supuesto2', 'core_message');
+
     $options = new stdClass();
     $options->courseid = $course->id;
+    $options->fullname = $coursename;
+    $options->msgwelcome = $welcomemsg;
     $options->noteStateNames = note_get_state_names();
     $options->stateHelpIcon = $OUTPUT->help_icon('publishstate', 'notes');
     $PAGE->requires->js_call_amd('core_user/participants', 'init', [$options]);
