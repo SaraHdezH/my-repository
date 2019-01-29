@@ -21,6 +21,7 @@ $CFG->dboptions = array (
 $CFG->wwwroot   = 'http://localhost:8888/moodle36';
 $CFG->dataroot  = '/Applications/MAMP/moodledata36';
 $CFG->admin     = 'admin';
+$CFG->cachejs = false;
 
 $CFG->directorypermissions = 0777;
 
