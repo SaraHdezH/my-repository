@@ -293,6 +293,7 @@ if ($bulkoperations) {
     echo html_writer::end_tag('div');
     $displaylist = array();
     $displaylist['#messageselect'] = get_string('messageselectadd');
+    $displaylist['#welcomemessage'] = get_string('prueba');
     if (!empty($CFG->enablenotes) && has_capability('moodle/notes:manage', $context) && $context->id != $frontpagectx->id) {
         $displaylist['#addgroupnote'] = get_string('addnewnote', 'notes');
     }
