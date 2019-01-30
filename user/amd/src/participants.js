@@ -280,7 +280,7 @@ define(['jquery', 'core/str', 'core/modal_factory', 'core/modal_events', 'core/t
         return $.when(
             ModalFactory.create({
                 type: ModalFactory.types.SAVE_CANCEL,
-                body: Templates.render('core_user/send_bulk_message', {})
+                body: Templates.render('core_user/send_bulk_message', context)
             }),
             titlePromise
         ).then(function(modal, title) {
@@ -352,7 +352,7 @@ define(['jquery', 'core/str', 'core/modal_factory', 'core/modal_events', 'core/t
             return this.modal;
         }.bind(this));
     };
-    
+
     /**
      * Send a message to these users.
      *
