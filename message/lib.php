@@ -336,7 +336,7 @@ function message_post_message($userfrom, $userto, $message, $format) {
     //using string manager directly so that strings in the message will be in the message recipients language rather than the senders
     $eventdata->subject          = get_string_manager()->get_string('unreadnewmessage', 'message', fullname($userfrom), $userto->lang);
 
-    if ($format == FORMAT_HTML) {
+    if ($format != FORMAT_HTML) {
         $eventdata->fullmessagehtml  = $message;
         //some message processors may revert to sending plain text even if html is supplied
         //so we keep both plain and html versions if we're intending to send html
