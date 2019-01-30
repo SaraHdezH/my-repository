@@ -270,6 +270,8 @@ define(['jquery', 'core/str', 'core/modal_factory', 'core/modal_events', 'core/t
             // Nothing to do.
             return $.Deferred().resolve().promise();
         }
+        var context = {fullname: this.fullname}; 
+
         var titlePromise = null;
         if (users.length == 1) {
             titlePromise = Str.get_string('sendbulkmessagesingle', 'core_message');
