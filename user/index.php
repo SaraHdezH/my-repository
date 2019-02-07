@@ -350,9 +350,12 @@ if ($bulkoperations) {
     echo '</form>';
 
     $a = new stdClass();
+    $urlcourse = "$CFG->wwwroot/course/view.php?id=$course->id";
     $a->coursename = $course->fullname;
-    $coursename= get_string('welcomemessage', '', $a);
-    $welcomemsg=get_string('supuesto2', 'core_message');
+    $a->urlcourse = $urlcourse;
+    $coursename = get_string('welcomemessage', '', $a);
+    $welcomemsg = get_string('supuesto2', 'core_message');
+
 
     $options = new stdClass();
     $options->courseid = $course->id;
