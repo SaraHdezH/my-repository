@@ -167,11 +167,11 @@ class manager {
             $localisedeventdata->fullmessagehtml = $eventdata->fullmessagehtml;
             if (!empty($localisedeventdata->fullmessage)) {
                 $localisedeventdata->fullmessage .= "\n\n---------------------------------------------------------------------\n"
-                    . $emailtagline;
+                    . $emailtagline."3";
             }
             if (!empty($localisedeventdata->fullmessagehtml)) {
                 $localisedeventdata->fullmessagehtml .=
-                    "<br><br>---------------------------------------------------------------------<br>" . $emailtagline;
+                    "<br><br>---------------------------------------------------------------------<br>" . $emailtagline."4";
             }
 
             // If recipient is internal user (noreply user), and emailstop is set then don't send any msg.
