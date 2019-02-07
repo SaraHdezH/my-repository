@@ -353,13 +353,12 @@ function message_post_message($userfrom, $userto, $message, $format) {
     $s->sitename = format_string($SITE->shortname, true, array('context' => context_course::instance(SITEID)));
     $s->url = $CFG->wwwroot.'/message/index.php?user='.$userto->id.'&id='.$userfrom->id;
 
-    $emailtagline = (string)new lang_string('emailtagline', 'message', $s, $userto->lang);
-    
+    $emailtagline = get_string_manager()->get_string('emailtagline', 'message', $s, $userto->lang);
     if (!empty($eventdata->fullmessage)) {
-        $eventdata->fullmessage .= "\n\n---------------------------------------------------------------------\n".$emailtagline;
+        $eventdata->fullmessage .= "\n\n---------------------------------------------------------------------\n".$emailtagline."1";
     }
     if (!empty($eventdata->fullmessagehtml)) {
-        $eventdata->fullmessagehtml .= "<br /><br />---------------------------------------------------------------------<br />".$emailtagline."loquesea2";
+        $eventdata->fullmessagehtml .= "<br /><br />---------------------------------------------------------------------<br />"."<p>".$emailtagline."</p>"."2";
     }
 
     $eventdata->timecreated     = time();
