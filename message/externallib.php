@@ -53,7 +53,7 @@ class core_message_external extends external_api {
                     new external_single_structure(
                         array(
                             'text' => new external_value(PARAM_RAW, 'the text of the message'),
-                            'textformat' => new external_format_value('text', VALUE_DEFAULT, FORMAT_MOODLE),
+                            'textformat' => new external_format_value('text', NULL, FORMAT_HTML),
                         )
                     )
                 )
@@ -165,7 +165,7 @@ class core_message_external extends external_api {
         foreach($params['messages'] as $message) {
             $receivers[] = $message['touserid'];
         }
-        list($sqluserids, $sqlparams) = $DB->get_in_or_equal($receivers);
+        list($sqluserids, $sqlparams) = $DB->get_in_or_equal($receivers, SQL_PARAMS_NAMED, 'userid_');
         $tousers = $DB->get_records_select("user", "id " . $sqluserids . " AND deleted = 0", $sqlparams);
 
         $resultmessages = array();
